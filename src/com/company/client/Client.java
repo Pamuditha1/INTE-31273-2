@@ -9,16 +9,15 @@ public class Client {
     private BufferedReader bufferedReader;
 
     //constructor-start
-     public void start() throws IOException {
+    public Client() throws IOException {
+        System.out.println("Client is running ...");
+        Socket socket = new Socket("localhost", 6000);
 
-         System.out.println("Client is running ...");
-         Socket socket = new Socket("localhost", 6000);
-
-         //InputStream, outputStream
-         this.outputStream = new DataOutputStream(socket.getOutputStream());
-         InputStream inputStream = socket.getInputStream();
-         this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-     }
+        //InputStream, outputStream
+        this.outputStream = new DataOutputStream(socket.getOutputStream());
+        InputStream inputStream = socket.getInputStream();
+        this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+    }
 
      public  void  sendMessage(String message) throws IOException {
          System.out.println("Client Says : "+ message);

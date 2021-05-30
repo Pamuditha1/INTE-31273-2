@@ -14,7 +14,7 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(20000);
+//            Thread.sleep(20000);
 
             //receive
             InputStream inputStream = client.getInputStream();
@@ -40,6 +40,15 @@ public class ClientHandler implements Runnable {
                     case "Thank You." :
                         outputStream.writeBytes("You are welcome. \n");
                         break;
+                    case "Hi!." :
+                        outputStream.writeBytes("Enter Your name : \n");
+                        break;
+//                    case inputData.contains("name") :
+//                        var data = inputData;
+//                        var name = data.split(",")[1];
+//                        outputStream.writeBytes("Name entered is " + name + "\n");
+//                        break;
+
                     default:
                         outputStream.writeBytes("I did't understand that. \n");
                 }
@@ -50,7 +59,7 @@ public class ClientHandler implements Runnable {
             }
             this.client.close();
 
-        } catch (InterruptedException | IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
